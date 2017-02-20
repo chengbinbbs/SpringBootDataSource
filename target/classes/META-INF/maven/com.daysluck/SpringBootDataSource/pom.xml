@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.daysluck</groupId>
+  <artifactId>SpringBootDataSource</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.4.3.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+  
+  <dependencies>
+  <!-- 核心模块，包括自动配置支持、日志和YAML -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter</artifactId>
+	</dependency>
+	<!-- 测试模块，包括JUnit、Hamcrest、Mockito -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+	
+	<!-- 监控和管理应用 -->
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-actuator</artifactId>
+	</dependency>
+	
+	<!-- 发送邮件. -->
+	<dependency> 
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-mail</artifactId>
+	</dependency>
+	
+	<!-- mysql 数据库驱动. -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+	</dependency>
+	
+	<!-- druid数据库连接池 -->
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>1.0.20</version>
+    </dependency>
+    
+    <!-- <dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis-spring</artifactId>
+		<version>1.2.2</version>
+	</dependency>
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis</artifactId>
+		<version>3.2.8</version>
+	</dependency> -->
+	
+    <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>1.1.1</version>
+    </dependency>
+   
+    <!--
+        MyBatis提供了拦截器接口，我们可以实现自己的拦截器，
+        将其作为一个plugin装入到SqlSessionFactory中。
+       Github上有位开发者写了一个分页插件，我觉得使用起来还可以，挺方便的。
+       Github项目地址： https://github.com/pagehelper/Mybatis-PageHelper
+     -->  
+    <dependency>
+        <groupId>com.github.pagehelper</groupId>
+        <artifactId>pagehelper</artifactId>
+        <version>4.1.0</version>
+    </dependency>
+	
+	<!-- 添加redis支持-->
+    <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-redis</artifactId>
+     </dependency>
+   
+    <!-- JPA操作数据库. -->
+	<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+	</dependency>
+	
+	<dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+    </dependency>
+    
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.1.43</version>
+    </dependency>
+    <dependency>
+        <groupId>com.mangofactory</groupId>
+        <artifactId>swagger-springmvc</artifactId>
+        <version>0.9.5</version>
+    </dependency>
+	
+	<dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-freemarker</artifactId>
+	</dependency>
+	
+	<!--
+           devtools可以实现页面热部署（即页面修改后会立即生效，这个可以直接在application.properties文件中配置spring.thymeleaf.cache=false来实现），    
+           实现类文件热部署（类文件修改后不会立即生效），实现对属性文件的热部署。 
+           即devtools会监听classpath下的文件变动，并且会立即重启应用（发生在保存时机），注意：因为其采用的虚拟机机制，该项重启是很快的    
+        -->
+      <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-devtools</artifactId>
+           <optional>true</optional>
+       </dependency>
+
+ </dependencies>
+ 
+ <build>
+	<plugins>
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+			<configuration>
+               <!--fork :  如果没有该项配置，肯呢个devtools不会起作用，即应用不会restart -->
+                <fork>true</fork>
+            </configuration>
+		</plugin>
+	</plugins>
+</build>
+</project>
